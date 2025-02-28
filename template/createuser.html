@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>createuser</title>
+    <style>
+        /* Basic reset for the page */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Main form container */
+        .main {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            max-width: 100%;
+        }
+
+        /* Heading styles */
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+
+        /* Label styling */
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            display: block;
+        }
+
+        /* Input field styling */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        /* Radio button styling */
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        /* Submit button styling */
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for submit button */
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        /* Additional styling for radio buttons */
+        .bu {
+            margin-top: 20px;
+        }
+
+        .bu input[type="radio"] {
+            margin-right: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <h1>MIRAAJ ASSOCIATES DIARY</h1>
+            <h1>Create New User</h1>
+            <div class="bu">
+            <lable for="username">Username</lable>
+            <input type="text" name="username"><br><br>
+            <label for="first_name">First name</label>
+            <input type="text" name="first_name"><br><br>
+            <label for="last_name">last_name</label>
+            <input type="text" name="last_name"><br><br>
+            
+            <label for="password">Password</label>
+            <input type="password" name="password"><br><br>
+            <label for="email">Email</label>
+            <input type="email" name="email" ><br><br>
+        
+                <input type="radio" name="is_vendor" value="True">is_vendor
+            </label>
+            <label>
+                <input type="radio" name="is_vendor" value="False">Not_vendor
+            </label><br><br>
+            <input type="submit" name="create" value="create"><br><br>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

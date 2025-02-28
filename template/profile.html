@@ -1,0 +1,293 @@
+<!-- 
+ <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profile</title>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+            }
+    
+            table, th, td {
+                border: 1px solid black;
+            }
+    
+            th, td {
+                padding: 8px;
+                text-align: left;
+            }
+    
+            th {
+                background-color: #f2f2f2;
+            }
+    
+            button {
+                background-color: black;
+                color: white;
+                padding: 12px 24px;
+                margin: 10px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+            }
+        </style>
+    </head>
+    <body>
+        <p><strong>{{ user.username }}</strong>'s Profile</p>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Client Details</th>
+                    <th>Complaint Details</th>
+                    <th>PS/IO Number</th>
+                    <th>Account Balances</th>
+                    <th>Transaction Amount</th>
+                    <th>Disputed Amount</th>
+                    <th>Freez</th>
+                    <th>Layer</th>
+                    <th>Date</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for detail in details_list %}
+                    <tr>
+                        <td>{{ detail.client_details }}</td>
+                        <div class="co">
+                        <td>
+                            {% for complaint in detail.complaint_set.all %}
+                                <div><u>{{ complaint.complaint_details }}</u></div>
+                            {% endfor %}
+                        </td>
+                        </div>
+                        <td>
+                        {% for complaint in detail.complaints.all %}
+                            <div>{{ complaint.ps_io_number }}</div>
+                        {% endfor %}
+                        </td> -->
+                      
+                        <!-- <td>{{detail.ps_io_number}}</td> -->
+                        <!-- <td>{{ detail.account_balances }}</td>
+                        <td>{{ detail.transaction_amount }}</td>
+                        <td>{{ detail.disputed_amount }}</td>
+                        <td>{{ detail.frezz }}</td>
+                        <td>{{ detail.layer }}</td>
+                        <td>{{ detail.date }}</td>
+                        <td>{{ detail.update }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="10">No details found for your profile.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        <div class="bu">
+            <button>Edit Details</button>
+            <button>Delete Details</button>
+        </div>
+    </body>
+    </html> -->
+    <!-- <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profile</title>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+            }
+
+            table, th, td {
+                border: 1px solid black;
+            }
+
+            th, td {
+                padding: 8px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+
+            button {
+                background-color: black;
+                color: white;
+                padding: 12px 24px;
+                margin: 10px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+            }
+        </style>
+    </head>
+    <body>
+        <p><strong>{{ user.username }}</strong>'s Profile</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Client Details</th>
+                    <th>Complaint Details</th>
+                    <th>PS/IO Numbers</th>
+                    <th>Account Balances</th>
+                    <th>Transaction Amount</th>
+                    <th>Disputed Amount</th>
+                    <th>Freez</th>
+                    <th>Layer</th>
+                    <th>Date</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for detail in details_list %}
+                    <tr>
+                        <td>{{ detail.client_details }}</td>
+                        <td>
+                            {% for complaint in detail.complaint_set.all %}
+                                <div><u>{{ complaint.complaint_details }}</u></div>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for complaint in detail.complaint_set.all %}
+                                <div>{{ complaint.ps_io_number }}</div>
+                            {% endfor %}
+                        </td>
+                        <td>{{ detail.account_balances }}</td>
+                        <td>{{ detail.transaction_amount }}</td>
+                        <td>{{ detail.disputed_amount }}</td>
+                        <td>{{ detail.frezz }}</td>
+                        <td>{{ detail.layer }}</td>
+                        <td>{{ detail.date }}</td>
+                        <td>{{ detail.update }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="10">No details found for your profile.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="bu">
+            <button>Edit Details</button>
+            <button>Delete Details</button>
+        </div>
+    </body>
+</html> -->
+
+     
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profile</title>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 20px 0;
+            }
+    
+            table, th, td {
+                border: 1px solid black;
+            }
+    
+            th, td {
+                padding: 8px;
+                text-align: left;
+            }
+    
+            th {
+                background-color: #f2f2f2;
+            }
+    
+            button {
+                background-color: black;
+                color: white;
+                padding: 12px 24px;
+                margin: 10px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+            }
+            div{
+            border: 1px solid black;
+            margin: 18px;
+}
+
+        </style>
+    </head>
+    <body>
+        <p><strong>{{ user.username }}</strong>'s Profile</p>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th>Client Details</th>
+                    <th>Complaint Details</th>
+                    <th>PS/IO Numbers</th>
+                    <th>Account Balances</th>
+                    <th>Transaction Amount</th>
+                    <th>Disputed Amount</th>
+                    <th>Freez</th>
+                    <th>Layer</th>
+                    <th>Date</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for detail in details_list %}
+                    <tr>
+                        <td>{{ detail.client_details }}</td>
+                        <td>
+                            {% for complaint in detail.complaint_set.all %}
+                                <div>{{ complaint.complaint_details }}</div>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {% for complaint in detail.complaint_set.all %}
+                                {% for ps_io in complaint.ps_io_numbers.all %}
+                                    <div>{{ ps_io.ps_io_number }}</div>
+                                {% empty %}
+                                    <div>No PS/IO Numbers</div>
+                                {% endfor %}
+                            {% endfor %}
+                        </td>
+                        <td>{{ detail.account_balances }}</td>
+                        <td>{{ detail.transaction_amount }}</td>
+                        <td>{{ detail.disputed_amount }}</td>
+                        <td>{{ detail.frezz }}</td>
+                        <td>{{ detail.layer }}</td>
+                        <td>{{ detail.date }}</td>
+                        <td>{{ detail.update }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="10">No details found for your profile.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        <div class="bu">
+            <button>Edit Details</button>
+            <button>Delete Details</button>
+        </div>
+    </body>
+    </html>
+         

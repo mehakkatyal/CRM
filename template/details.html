@@ -1,0 +1,308 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Client Details</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Client Details</h2>
+        <form method="POST">
+            {% csrf_token %}
+            
+             Client Details Form -->
+            <!-- <div class="form-group">
+                <label for="client_details">Client Details:</label>
+                <input type="text" id="client_details" name="client_details" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ps_io_number_1">PS/IO Number 1:</label>
+                <input type="text" id="ps_io_number_1" name="ps_io_number_1" required>
+            </div> -->
+
+            <!-- Multiple Complaint Details -->
+            <!-- <div id="complaints-container">
+                <div class="form-group">
+                    <label for="complaint_details">Complaint Details:</label>
+                    <input type="text" name="complaint_details" class="complaint-details" required>
+                </div>
+            </div> -->
+
+            <!-- Add More Complaints Button -->
+            <!-- <button type="button" id="add-complaint">Add Another Complaint</button> -->
+
+            <!-- Other Fields for Each PS/IO -->
+            <!-- <div class="form-group">
+                <label for="account_balances">Account Balances:</label>
+                <input type="number" id="account_balances" name="account_balances" required>
+            </div>
+
+            <div class="form-group">
+                <label for="transaction_amount">Transaction Amount:</label>
+                <input type="number" id="transaction_amount" name="transaction_amount" required>
+            </div>
+
+            <div class="form-group">
+                <label for="disputed_amount">Disputed Amount:</label>
+                <input type="text" id="disputed_amount" name="disputed_amount" required>
+            </div>
+
+            <div class="form-group">
+                <label for="frezz">Frezz:</label>
+                <input type="text" id="frezz" name="frezz" required>
+            </div>
+
+            <div class="form-group">
+                <label for="layer">Layer:</label>
+                <input type="text" id="layer" name="layer" required>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="update">Update:</label>
+                <textarea id="update" name="update" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script> -->
+        <!-- // Handle adding multiple complaint fields
+//         document.getElementById('add-complaint').addEventListener('click', function() {
+//             const complaintContainer = document.getElementById('complaints-container');
+//             const newComplaint = document.createElement('div');
+//             newComplaint.classList.add('form-group');
+//             newComplaint.innerHTML = `
+//                 <label for="complaint_details">Complaint Details:</label>
+//                 <input type="text" name="complaint_details" class="complaint-details" required>
+//             `;
+//             complaintContainer.appendChild(newComplaint);
+//         });
+//     </script>
+// </body>
+// </html> -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Client Details</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Client Details</h2>
+        <form method="POST">
+            {% csrf_token %}
+            
+             Client Details Form -->
+            <!-- <div class="form-group">
+                <label for="client_details">Client Details:</label>
+                <input type="text" id="client_details" name="client_details" required>
+            </div> -->
+
+            <!-- Multiple PS/IO Numbers -->
+            <!-- <div id="ps_io-numbers-container">
+                <div class="form-group">
+                    <label for="ps_io_number_1">PS/IO Number 1:</label>
+                    <input type="text" id="ps_io_number_1" name="ps_io_number" required>
+                </div>
+            </div> -->
+
+            <!-- Multiple Complaint Details -->
+            <!-- <div id="complaints-container">
+                <div class="form-group">
+                    <label for="complaint_details">Complaint Details:</label>
+                    <input type="text" name="complaint_details" class="complaint-details" required>
+                </div>
+            </div> -->
+
+            <!-- Add More Complaints Button -->
+            <!-- <button type="button" id="add-complaint">Add Another Complaint</button> -->
+
+            <!-- Add More PS/IO Numbers Button -->
+            <!-- <button type="button" id="add-ps_io">Add Another PS/IO Number</button> -->
+
+            <!-- Other Fields for Each PS/IO -->
+            <!-- <div class="form-group">
+                <label for="account_balances">Account Balances:</label>
+                <input type="number" id="account_balances" name="account_balances" required>
+            </div>
+
+            <div class="form-group">
+                <label for="transaction_amount">Transaction Amount:</label>
+                <input type="number" id="transaction_amount" name="transaction_amount" required>
+            </div>
+
+            <div class="form-group">
+                <label for="disputed_amount">Disputed Amount:</label>
+                <input type="text" id="disputed_amount" name="disputed_amount" required>
+            </div>
+
+            <div class="form-group">
+                <label for="frezz">Frezz:</label>
+                <input type="text" id="frezz" name="frezz" required>
+            </div>
+
+            <div class="form-group">
+                <label for="layer">Layer:</label>
+                <input type="text" id="layer" name="layer" required>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="update">Update:</label>
+                <textarea id="update" name="update" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script> -->
+        <!-- // Handle adding multiple complaint fields
+        // document.getElementById('add-complaint').addEventListener('click', function() {
+        //     const complaintContainer = document.getElementById('complaints-container');
+        //     const newComplaint = document.createElement('div');
+        //     newComplaint.classList.add('form-group');
+        //     newComplaint.innerHTML = `
+        //         <label for="complaint_details">Complaint Details:</label>
+        //         <input type="text" name="complaint_details" class="complaint-details" required>
+        //     `;
+        //     complaintContainer.appendChild(newComplaint);
+        // });
+
+        // Handle adding multiple PS/IO Number fields
+//         document.getElementById('add-ps_io').addEventListener('click', function() {
+//             const psIoContainer = document.getElementById('ps_io-numbers-container');
+//             const newPsIo = document.createElement('div');
+//             newPsIo.classList.add('form-group');
+//             newPsIo.innerHTML = `
+//                 <label for="ps_io_number">PS/IO Number:</label>
+//                 <input type="text" name="ps_io_number" required>
+//             `;
+//             psIoContainer.appendChild(newPsIo);
+//         });
+//     </script>
+// </body>
+// </html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Client Details</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Client Details</h2>
+        <form method="POST">
+            {% csrf_token %}
+            
+            <!-- Client Details Form -->
+            <div class="form-group">
+                <label for="client_details">Client Details:</label>
+                <input type="text" id="client_details" name="client_details" required>
+            </div>
+
+            <!-- Multiple PS/IO Numbers -->
+            <div id="ps_io-numbers-container">
+                <div class="form-group">
+                    <label for="ps_io_number_1">PS/IO Number 1:</label>
+                    <input type="text" id="ps_io_number_1" name="ps_io_number" required>
+                </div>
+            </div>
+
+            <!-- Multiple Complaint Details -->
+            <div id="complaints-container">
+                <div class="form-group">
+                    <label for="complaint_details">Complaint Details:</label>
+                    <input type="text" name="complaint_details" class="complaint-details" required>
+                </div>
+            </div>
+
+            <!-- Add More PS/IO Numbers Button -->
+            <button type="button" id="add-ps_io">Add Another PS/IO Number</button>
+
+            <!-- Add More Complaints Button -->
+            <button type="button" id="add-complaint">Add Another Complaint</button>
+
+            <!-- Other Fields for Each PS/IO -->
+            <div class="form-group">
+                <label for="account_balances">Account Balances:</label>
+                <input type="number" id="account_balances" name="account_balances" required>
+            </div>
+
+            <div class="form-group">
+                <label for="transaction_amount">Transaction Amount:</label>
+                <input type="number" id="transaction_amount" name="transaction_amount" required>
+            </div>
+
+            <div class="form-group">
+                <label for="disputed_amount">Disputed Amount:</label>
+                <input type="text" id="disputed_amount" name="disputed_amount" required>
+            </div>
+
+            <div class="form-group">
+                <label for="frezz">Frezz:</label>
+                <input type="text" id="frezz" name="frezz" required>
+            </div>
+
+            <div class="form-group">
+                <label for="layer">Layer:</label>
+                <input type="text" id="layer" name="layer" required>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="update">Update:</label>
+                <textarea id="update" name="update" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // Handle adding multiple PS/IO Numbers
+        document.getElementById('add-ps_io').addEventListener('click', function() {
+            const psIoContainer = document.getElementById('ps_io-numbers-container');
+            const newPsIo = document.createElement('div');
+            newPsIo.classList.add('form-group');
+            newPsIo.innerHTML = `
+                <label for="ps_io_number">PS/IO Number:</label>
+                <input type="text" name="ps_io_number" required>
+            `;
+            psIoContainer.appendChild(newPsIo);
+        });
+
+        // Handle adding multiple complaint fields
+        document.getElementById('add-complaint').addEventListener('click', function() {
+            const complaintContainer = document.getElementById('complaints-container');
+            const newComplaint = document.createElement('div');
+            newComplaint.classList.add('form-group');
+            newComplaint.innerHTML = `
+                <label for="complaint_details">Complaint Details:</label>
+                <input type="text" name="complaint_details" class="complaint-details" required>
+            `;
+            complaintContainer.appendChild(newComplaint);
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homepage</title>
+    <style>
+        /* Resetting margins and padding for all elements */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("logo.jpg");
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-position: center center; /* Centers the background image */
+            background-attachment: fixed; /* Keeps the background fixed when scrolling */
+            color: #333;
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Main header */
+        .nav {
+            background-color:white;
+            color: black;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .nav h1 {
+            font-size: 36px;
+            letter-spacing: 2px;
+        }
+
+        /* Container for buttons */
+        .button-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        button {
+            background-color:black;
+            color: white;
+            padding: 12px 24px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Hover effect */
+        button:hover {
+            background-color:black;
+            transform: translateY(-2px);
+        }
+
+        /* Active state (on click) */
+        button:active {
+            background-color: #1abc9c;
+            transform: translateY(0);
+        }
+
+        /* If the user is logged in, we add a small badge next to the button */
+        button.logged-in {
+            background-color: #2ecc71;
+        }
+
+        button.logged-in:hover {
+            background-color: #27ae60;
+        }
+
+        /* Styling for the profile button to distinguish it from others */
+        /* .profile-btn {
+            background-color: #9b59b6;
+        }
+
+        .profile-btn:hover {
+            background-color: #8e44ad;
+        } */
+
+        /* Optional: Style the links */
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <h1>MIRAAJ  ASSOCIATES DIARY</h1>
+        <button><a href="createuser/">createuser</a></button>
+        <button><a href="details/">add details</a></button>
+        
+       <!-- <button ><a href="userprofile/">profile</a></button> -->
+       <button class="profile-btn"><a href="userprofile/">Profile</a></button>
+       {% if user.is_authenticated %}
+           <button><a href="logout/">logout</a></button>
+        
+        {% else %}
+
+           <button><a href="login/">login</a></button>
+        {% endif%}
+
+    </div>
+    <!-- <div class="bu"></div>
+             <button><a href="createuser/">createuser</a></button> -->
+            <!-- <button><a href="details/">add details</a></button> -->
+            <!-- {% if user.is_authenticated %} -->
+            <!-- <button><a href="logout/">logout</a></button> -->
+            
+            <!-- {% else %} -->
+
+            <!-- <button><a href="login/">login</a></button> -->
+            <!-- {% endif%} -->
+           <!-- <button ><a href="userprofile/">profile</a></button> -->
+    </div>
+    <!-- <button class="profile-btn"><a href="userprofile/">Profile</a></button>  -->
+    <!-- <button><a href="details/">add details</a></button> -->
+</body>
+
+</html>
