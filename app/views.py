@@ -2,11 +2,10 @@ from django.shortcuts import render,HttpResponse,HttpResponseRedirect,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from app.models import userprofile,details,complaint,PSIONumber
-
+from app.models import userprofile,details,complaint,PSIONumber,TransactionAmount,DisputedAmount,Layer,Freeze,InwardDate,Update
+from django.core.paginator import Paginator
 def homepage(request):
-    # if request.method=="POST":
-        # return HttpResponse("hello")
+ 
         return render(request,'homepage.html')
 def userlogin(request):
     if request.method == "POST":
@@ -56,153 +55,128 @@ def createuser(request):
     else:
         return render(request,'createuser.html')
 @login_required
-# def add_details(request):
-#      if request.method=="GET":
-#           return render(request,"details.html")
-#      else:
-#           client_details=request.POST.get('client_details')
-#           complaint_details=request.POST.get('complaint_details')
-#           ps_io_number=request.POST.get('ps_io_number')
-#           account_balances=request.POST.get('account_balances')
-#           transaction_amount=request.POST.get('transaction_amount')
-#           disputed_amount=request.POST.get('disputed_amount')
-#           frezz=request.POST.get('frezz')
-#           layer=request.POST.get('layer')
-#           date=request.POST.get('date')
-#           update=request.POST.get('update')
-
-#           detail=details.objects.create(
-#                client_details=client_details,
-#                complaint_details=complaint_details,
-#                ps_io_number=ps_io_number,
-#                account_balances=account_balances,
-#                transaction_amount=transaction_amount,
-#                disputed_amount=disputed_amount,
-#                frezz=frezz,
-#                layer=layer,
-#                date=date,
-#                update=update,
-#                user=request.user
-#           )
-#           detail.save()
-#           return HttpResponse("your details added sussfully")
-# def add_details(request):
-#     if request.method == "POST":
-#         client_details = request.POST.get('client_details')
-     
-#         account_balances = request.POST.get('account_balances')
-#         transaction_amount = request.POST.get('transaction_amount')
-#         disputed_amount = request.POST.get('disputed_amount')
-#         frezz = request.POST.get('frezz')
-#         layer = request.POST.get('layer')
-#         date = request.POST.get('date')
-#         update = request.POST.get('update')
-
-
-      
-      
-#         detail = details(
-#                     user=request.user,
-#                     client_details=client_details,
-                 
-#                     account_balances=account_balances,
-#                     transaction_amount=transaction_amount,
-#                     disputed_amount=disputed_amount,
-#                     frezz=frezz,
-#                     layer=layer,
-#                     date=date,
-#                     update=update
-#                 )
-#         detail.save()
-#         complaint_details_list = request.POST.getlist('complaint_details')  # Assuming you pass multiple complaints
-
-#         for complaint_detail in complaint_details_list:
-#             complaint.objects.create(
-#                 detail=detail,
-#                 complaint_details=complaint_detail
-#             )
-#         ps_io_numbers = request.POST.getlist('ps_io_number')  # get multiple PS/IO numbers
-#         for ps_io in ps_io_numbers:
-#              PSIONumber.objects.create(
-                
-#                     ps_io_number=ps_io
-                
-#                 )
-    
-
-#         return HttpResponse("your details added ")  # Redirect to a success page or profile page
-    
-#     return render(request, 'details.html')
 def add_details(request):
     if request.method == "POST":
         client_details = request.POST.get('client_details')
         account_balances = request.POST.get('account_balances')
-        transaction_amount = request.POST.get('transaction_amount')
-        disputed_amount = request.POST.get('disputed_amount')
-        frezz = request.POST.get('frezz')
-        layer = request.POST.get('layer')
-        date = request.POST.get('date')
-        update = request.POST.get('update')
-
-        # Create the detail object first
+        date = request.POST.get('date') 
         detail = details(
             user=request.user,
             client_details=client_details,
-            account_balances=account_balances,
-            transaction_amount=transaction_amount,
-            disputed_amount=disputed_amount,
-            frezz=frezz,
-            layer=layer,
-            date=date,
-            update=update
+             account_balances=account_balances,
+             date=date  
         )
-        detail.save()
-
-        # Create complaints and link them to the 'detail' object
+        detail.save() 
         complaint_details_list = request.POST.getlist('complaint_details')
         complaint_objects = []
-
         for complaint_detail in complaint_details_list:
             complaint_obj = complaint.objects.create(
-                detail=detail,  # Link complaint to the detail object
-                complaint_details=complaint_detail
+                detail=detail,  
+                complaint_details=complaint_detail,
+            
             )
             complaint_objects.append(complaint_obj)
 
-        # Create PSIONumber objects and associate each one with a complaint
+      
         ps_io_numbers = request.POST.getlist('ps_io_number')  # Get multiple PS/IO numbers
         for i, ps_io in enumerate(ps_io_numbers):
             if i < len(complaint_objects):
-                # Associate the PSIONumber with the corresponding complaint
+                # Associate the PS/IO number with the corresponding complaint
                 PSIONumber.objects.create(
-                    complaint=complaint_objects[i],  # Link PSIONumber to the correct complaint
+                    complaint=complaint_objects[i],  # Link PS/IO number to the correct complaint
                     ps_io_number=ps_io
                 )
             else:
-                # Handle case if there are more PS/IO numbers than complaints (ensure correct association)
+                # Associate with the last complaint if there are more PS/IO numbers than complaints
                 PSIONumber.objects.create(
-                    complaint=complaint_objects[-1],  # Associate with the last complaint if no match
+                    complaint=complaint_objects[-1],
                     ps_io_number=ps_io
                 )
 
-        return HttpResponse("Your details have been added successfully.")  # Or redirect to the profile or success page
-    
+        # Handle multiple transaction amounts
+        transaction_amounts = request.POST.getlist('transaction_amount')
+        for amount in transaction_amounts:
+            TransactionAmount.objects.create(
+                details=detail,  # Correct field name
+                amount=amount
+            )
+
+        # Handle multiple disputed amounts
+        disputed_amounts = request.POST.getlist('disputed_amount')
+        for amount in disputed_amounts:
+            DisputedAmount.objects.create(
+                details=detail,  # Correct field name
+                amount=amount
+            )
+
+        # Handle multiple freeze statuses
+        freezes = request.POST.getlist('frezz')
+        for freeze in freezes:
+            Freeze.objects.create(
+                details=detail,  # Correct field name
+                status=freeze
+            )
+
+        # Handle multiple layers
+        layers = request.POST.getlist('layer')
+        for layer_value in layers:
+            Layer.objects.create(
+                details=detail,  # Correct field name
+                layer=layer_value
+            )
+
+        # Handle multiple inward dates
+        inward_dates = request.POST.getlist('inward_date')
+        for inward_date in inward_dates:
+            InwardDate.objects.create(
+                details=detail,  # Correct field name
+                inward_date=inward_date
+            )
+
+        # Handle multiple updates
+        updates = request.POST.getlist('update')
+        for update_text in updates:
+            Update.objects.create(
+                details=detail,  # Correct field name
+                update_text=update_text
+            )
+
+        return HttpResponse("Your details have been added successfully.")
+
     return render(request, 'details.html')
 
 @login_required
+ 
 # def profile(request):
-#     pro=details.objects.filter(user=request.user)
-#     return render(request,'profile.html',{'pro':pro})  
-# def profile(request):
+
+
+
+
 #     details_list = details.objects.filter(user=request.user)
-#     return render(request, 'profile.html', {'details_list': details_list})   
+
+#     paginator=Paginator(details_list,5)
+#     page_number=request.GET.get('page')
+#     page_obj = paginator.get_page(page_number)
+#     print(details_list)
+#     return render(request, 'profile.html', {'page_obj':page_obj})
 def profile(request):
-    # Fetch the details associated with the logged-in user
-    details_list = details.objects.filter(user=request.user)
-    print(details_list)
+    # Check if the current user is a vendor
+    if request.user.userprofile.is_vendor:  # Assuming 'is_vendor' field in the profile model
+        # If the user is a vendor, show all profiles
+        details_list = details.objects.all()  
+    else:
+        # If the user is not a vendor, show only the current user's profile
+        details_list = details.objects.filter(user=request.user)
     
-    # Render the profile template with the details_list
-    return render(request, 'profile.html', {'details_list': details_list})
+    # Apply pagination
+    paginator = Paginator(details_list, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    
+    return render(request, 'profile.html', {'page_obj': page_obj})
+
+
 def deldetail(request):
     det=details.objects.filter(user=request.user)
     det.delete()

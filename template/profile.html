@@ -1,29 +1,25 @@
-<!-- 
- <html lang="en">
+<!DOCTYPE html>
+    <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Profile</title>
+        <title>{{ user.username }}'s Profile</title>
         <style>
             table {
                 width: 100%;
                 border-collapse: collapse;
                 margin: 20px 0;
             }
-    
             table, th, td {
                 border: 1px solid black;
             }
-    
             th, td {
                 padding: 8px;
                 text-align: left;
             }
-    
             th {
                 background-color: #f2f2f2;
             }
-    
             button {
                 background-color: black;
                 color: white;
@@ -35,201 +31,10 @@
                 cursor: pointer;
                 transition: background-color 0.3s ease, transform 0.2s ease;
             }
-        </style>
-    </head>
-    <body>
-        <p><strong>{{ user.username }}</strong>'s Profile</p>
-    
-        <table>
-            <thead>
-                <tr>
-                    <th>Client Details</th>
-                    <th>Complaint Details</th>
-                    <th>PS/IO Number</th>
-                    <th>Account Balances</th>
-                    <th>Transaction Amount</th>
-                    <th>Disputed Amount</th>
-                    <th>Freez</th>
-                    <th>Layer</th>
-                    <th>Date</th>
-                    <th>Update</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for detail in details_list %}
-                    <tr>
-                        <td>{{ detail.client_details }}</td>
-                        <div class="co">
-                        <td>
-                            {% for complaint in detail.complaint_set.all %}
-                                <div><u>{{ complaint.complaint_details }}</u></div>
-                            {% endfor %}
-                        </td>
-                        </div>
-                        <td>
-                        {% for complaint in detail.complaints.all %}
-                            <div>{{ complaint.ps_io_number }}</div>
-                        {% endfor %}
-                        </td> -->
-                      
-                        <!-- <td>{{detail.ps_io_number}}</td> -->
-                        <!-- <td>{{ detail.account_balances }}</td>
-                        <td>{{ detail.transaction_amount }}</td>
-                        <td>{{ detail.disputed_amount }}</td>
-                        <td>{{ detail.frezz }}</td>
-                        <td>{{ detail.layer }}</td>
-                        <td>{{ detail.date }}</td>
-                        <td>{{ detail.update }}</td>
-                    </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="10">No details found for your profile.</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    
-        <div class="bu">
-            <button>Edit Details</button>
-            <button>Delete Details</button>
-        </div>
-    </body>
-    </html> -->
-    <!-- <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Profile</title>
-        <style>
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                margin: 20px 0;
-            }
-
-            table, th, td {
+            div {
                 border: 1px solid black;
+                margin: 18px;
             }
-
-            th, td {
-                padding: 8px;
-                text-align: left;
-            }
-
-            th {
-                background-color: #f2f2f2;
-            }
-
-            button {
-                background-color: black;
-                color: white;
-                padding: 12px 24px;
-                margin: 10px;
-                border: none;
-                border-radius: 5px;
-                font-size: 16px;
-                cursor: pointer;
-                transition: background-color 0.3s ease, transform 0.2s ease;
-            }
-        </style>
-    </head>
-    <body>
-        <p><strong>{{ user.username }}</strong>'s Profile</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Client Details</th>
-                    <th>Complaint Details</th>
-                    <th>PS/IO Numbers</th>
-                    <th>Account Balances</th>
-                    <th>Transaction Amount</th>
-                    <th>Disputed Amount</th>
-                    <th>Freez</th>
-                    <th>Layer</th>
-                    <th>Date</th>
-                    <th>Update</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for detail in details_list %}
-                    <tr>
-                        <td>{{ detail.client_details }}</td>
-                        <td>
-                            {% for complaint in detail.complaint_set.all %}
-                                <div><u>{{ complaint.complaint_details }}</u></div>
-                            {% endfor %}
-                        </td>
-                        <td>
-                            {% for complaint in detail.complaint_set.all %}
-                                <div>{{ complaint.ps_io_number }}</div>
-                            {% endfor %}
-                        </td>
-                        <td>{{ detail.account_balances }}</td>
-                        <td>{{ detail.transaction_amount }}</td>
-                        <td>{{ detail.disputed_amount }}</td>
-                        <td>{{ detail.frezz }}</td>
-                        <td>{{ detail.layer }}</td>
-                        <td>{{ detail.date }}</td>
-                        <td>{{ detail.update }}</td>
-                    </tr>
-                {% empty %}
-                    <tr>
-                        <td colspan="10">No details found for your profile.</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-        <div class="bu">
-            <button>Edit Details</button>
-            <button>Delete Details</button>
-        </div>
-    </body>
-</html> -->
-
-     
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Profile</title>
-        <style>
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                margin: 20px 0;
-            }
-    
-            table, th, td {
-                border: 1px solid black;
-            }
-    
-            th, td {
-                padding: 8px;
-                text-align: left;
-            }
-    
-            th {
-                background-color: #f2f2f2;
-            }
-    
-            button {
-                background-color: black;
-                color: white;
-                padding: 12px 24px;
-                margin: 10px;
-                border: none;
-                border-radius: 5px;
-                font-size: 16px;
-                cursor: pointer;
-                transition: background-color 0.3s ease, transform 0.2s ease;
-            }
-            div{
-            border: 1px solid black;
-            margin: 18px;
-}
-
         </style>
     </head>
     <body>
@@ -244,19 +49,19 @@
                     <th>Account Balances</th>
                     <th>Transaction Amount</th>
                     <th>Disputed Amount</th>
-                    <th>Freez</th>
+                    <th>Freeze</th>
                     <th>Layer</th>
                     <th>Date</th>
                     <th>Update</th>
                 </tr>
             </thead>
             <tbody>
-                {% for detail in details_list %}
+                {% for detail in page_obj  %}
                     <tr>
                         <td>{{ detail.client_details }}</td>
                         <td>
                             {% for complaint in detail.complaint_set.all %}
-                                <div>{{ complaint.complaint_details }}</div>
+                                <div><u>{{ complaint.complaint_details }}</u></div>
                             {% endfor %}
                         </td>
                         <td>
@@ -268,13 +73,69 @@
                                 {% endfor %}
                             {% endfor %}
                         </td>
-                        <td>{{ detail.account_balances }}</td>
-                        <td>{{ detail.transaction_amount }}</td>
-                        <td>{{ detail.disputed_amount }}</td>
-                        <td>{{ detail.frezz }}</td>
-                        <td>{{ detail.layer }}</td>
+                     
+                        <td>
+                            {% if detail.account_balances %}
+                                <div>{{ detail.account_balances }}</div>
+                            {% else %}
+                                <div>No Account Balances</div>
+                            {% endif %}
+                        </td>
+                        
+                        <!-- Multiple Transaction Amounts -->
+                        <td>
+                            {% for transaction in detail.transaction_amounts.all %}
+                                <div>{{ transaction.amount }}</div>
+                            {% empty %}
+                                <div>No Transaction Amounts</div>
+                            {% endfor %}
+                        </td>
+                        
+                        <!-- Multiple Disputed Amounts -->
+                        <td>
+                            {% for disputed in detail.disputed_amounts.all %}
+                                <div>{{ disputed.amount }}</div>
+                            {% empty %}
+                                <div>No Disputed Amounts</div>
+                            {% endfor %}
+                        </td>
+                        
+                        <!-- Multiple Freeze statuses -->
+                        <td>
+                            {% for freeze in detail.freezes.all %}
+                                <div>{{ freeze.status }}</div>
+                            {% empty %}
+                                <div>No Freeze Status</div>
+                            {% endfor %}
+                        </td>
+                        
+                        <!-- Multiple Layers -->
+                        <td>
+                            {% for layer in detail.layers.all %}
+                                <div>{{ layer.name }}</div>
+                            {% empty %}
+                                <div>No Layers</div>
+                            {% endfor %}
+                        </td>
+                        
+                        <!-- Date -->
                         <td>{{ detail.date }}</td>
-                        <td>{{ detail.update }}</td>
+                        
+                        <!-- Update -->
+                        <!-- <td>
+                            {% for update in detail.update.all %}
+                                <div>{{ update.update_text}}</div>
+                            {% empty %}
+                                <div> noupdate</div>
+                            {% endfor %}
+                        </td> -->
+                        <td>
+                            {% for update in detail.updates.all %}
+                                <div>{{ update.update_text }}</div>
+                            {% empty %}
+                                <div>No Updates</div>
+                            {% endfor %}
+                        </td>
                     </tr>
                 {% empty %}
                     <tr>
@@ -288,6 +149,101 @@
             <button>Edit Details</button>
             <button>Delete Details</button>
         </div>
+    
+        <!-- JavaScript for dynamically adding new rows -->
+        <script>
+            // Add functionality for dynamically adding rows to the profile
+            // Account Balance
+            document.getElementById('add-account-balance').addEventListener('click', function() {
+                const accountContainer = document.getElementById('account-balances-container');
+                const newAccountBalance = document.createElement('div');
+                newAccountBalance.classList.add('form-group');
+                newAccountBalance.innerHTML = `
+                    <label for="account_balance">Account Balance:</label>
+                    <input type="number" name="account_balance" required>
+                `;
+                accountContainer.appendChild(newAccountBalance);
+            });
+    
+            // Transaction Amount
+            document.getElementById('add-transaction-amount').addEventListener('click', function() {
+                const transactionContainer = document.getElementById('transaction-amounts-container');
+                const newTransactionAmount = document.createElement('div');
+                newTransactionAmount.classList.add('form-group');
+                newTransactionAmount.innerHTML = `
+                    <label for="transaction_amount">Transaction Amount:</label>
+                    <input type="number" name="transaction_amount" required>
+                `;
+                transactionContainer.appendChild(newTransactionAmount);
+            });
+    
+            // Disputed Amount
+            document.getElementById('add-disputed-amount').addEventListener('click', function() {
+                const disputedContainer = document.getElementById('disputed-amounts-container');
+                const newDisputedAmount = document.createElement('div');
+                newDisputedAmount.classList.add('form-group');
+                newDisputedAmount.innerHTML = `
+                    <label for="disputed_amount">Disputed Amount:</label>
+                    <input type="number" name="disputed_amount" required>
+                `;
+                disputedContainer.appendChild(newDisputedAmount);
+            });
+    
+            // Freeze Status
+            document.getElementById('add-freeze').addEventListener('click', function() {
+                const freezeContainer = document.getElementById('freeze-status-container');
+                const newFreeze = document.createElement('div');
+                newFreeze.classList.add('form-group');
+                newFreeze.innerHTML = `
+                    <label for="freeze_status">Freeze Status:</label>
+                    <input type="text" name="freeze_status" required>
+                `;
+                freezeContainer.appendChild(newFreeze);
+            });
+    
+            // Layer
+            document.getElementById('add-layer').addEventListener('click', function() {
+                const layerContainer = document.getElementById('layer-container');
+                const newLayer = document.createElement('div');
+                newLayer.classList.add('form-group');
+                newLayer.innerHTML = `
+                    <label for="layer">Layer:</label>
+                    <input type="text" name="layer" required>
+                `;
+                layerContainer.appendChild(newLayer);
+            });
+              // Handle adding multiple updates
+            document.getElementById('add-update').addEventListener('click', function() {
+                const updateContainer = document.getElementById('updates-container');
+                const newUpdate = document.createElement('div');
+                newUpdate.classList.add('form-group');
+                newUpdate.innerHTML = `
+                    <label for="update">Update:</label>
+                    <textarea name="update" class="update-text" required></textarea>
+                `;
+                updateContainer.appendChild(newUpdate);
+            });
+        </script>
+        <div class="pagination">
+            
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                   <a href="?page=1">first</a>
+                   <a href="?page={{page_obj.previous_page_number}}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    page{{page_obj.number}} of{{page_obj.paginator.num_pages}}
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last</a>
+                {% endif %}
+
+
+            </span>
+        </div>
     </body>
     </html>
-         
+      
